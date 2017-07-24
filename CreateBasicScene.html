@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebGL Skeleton Framework</title>
+    <style>
+        body{
+            margin:0;
+            overflow:hidden;
+        }
+        canvas{
+            background: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <script src="threejsLib/Lib/three_2.js"></script>
+
+    <canvas id="myCanvas"></canvas>
+
+    <script>
+        var renderer = new THREE.WebGLRenderer({canvas: document.getElementById('myCanvas'), antialias: true, alpha:true});
+        renderer.setClearColor(0x00ff00);
+        renderer.setPixelRatio(window.devicePixelRation);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        //document.body.appendChild(renderer.domElement);
+
+        // specific kind of camera
+
+        var camera = new THREE.PrespectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000);
+
+        // Container object of our whole world, where we are going to add things into
+        var scene = new  THREE.Scene();
+
+        // Add some content to our scene - for this we will create a mesh which takes two parameters
+        // Parameter 1: Geometry and Param 2: Material
+        // Geometry is the geometry that makes the actual 3D object.
+
+        // Here we are going to do is a basic three cube geometry
+        var geometry = new THREE.CubeGeometry(100,100,100);  //Three param are the each of the cube size i.e of x,y and z axis of the cube
+
+        // Next is the material.
+
+        var material =  new THREE.MeshBasicMaterial();
+
+        // We can take our mesh and pass the Geometry and the Material to it.
+
+        var mesh = new THREE.Mesh(geometry,material);
+
+        // Add mesh to our scene.
+
+        scene.add(mesh);
+        // To draw everything, call .render and pass scene and camera
+        renderer.render(scene,camera);
+
+    </script>
+
+</body>
+</html>

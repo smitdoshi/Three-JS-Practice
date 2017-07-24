@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GridMouseRoatation</title>
+</head>
+<body>
+<script src="threejsLib/Lib/three_2.js"></script>
+<script>
+    var camera, scene, renderer;
+
+    init();
+
+    function init(){
+        scene = new THREE.Scene();
+
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 1, 10000);
+
+        // camera positioning acts like zoom out or zoom in
+        camera.position.set(12,14,15);
+
+        // Make camera lookat particular Coordinates but we can also say
+
+        camera.lookAt(scene.position);  //Make sure to call this after scene object is create, in order to look at the center position
+
+        renderer = new THREE.WebGLRenderer();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Specifying the size(blocks) and spacing of the Grid
+        var size = 20; step = 2; // this will create 4 box and 2 lines addition to one center line
+
+        var geometry = new THREE.Geometry();
+        // Basic line for our Grid
+        var material = new THREE.LineBasicMaterial({color:'white'});
+
+        // For Loop
+        for(var i= -size; i<=size; i+= step){
+            // Basically measurement for our grid
+
+            // Left and Right
+            geometry.vertices.push(new THREE.Vector3(-size , -0.04, i));
+            geometry.vertices.push(new THREE.Vector3(size , -0.04, i));
+
+            //Up and down
+            geometry.vertices.push(new THREE.Vector3(i , -0.04, -size));
+            geometry.vertices.push(new THREE.Vector3(i , -0.04, size));
+        }
+
+        var line = new THREE.Line(geometry, material, THREE.LinePieces);
+        scene.add(line);
+        render();
+    }
+
+    function render(){
+        renderer.render(scene,camera);
+    }
+
+</script>
+
+</body>
+</html>
+</html>

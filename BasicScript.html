@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BasicScript</title>
+</head>
+<body>
+    <script src="threejsLib/Lib/three_2.js"></script>
+    <script>
+        var camera, scene, renderer;
+
+        init();
+
+        function init(){
+            scene = new THREE.Scene();
+
+            camera = new THREE.PrespectiveCamera(45, window.innerWidth/window.innerHeight, 1, 10000);
+
+            renderer = new THREE.WebGLRenderer();
+
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            render();
+        }
+
+        function render(){
+            renderer.render(scene,camera);
+        }
+
+    </script>
+
+</body>
+</html>

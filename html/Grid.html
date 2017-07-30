@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>GridMouseRoatation</title>
+    <title>Grid</title>
 </head>
 <body>
-<script src="threejsLib/Lib/three_2.js"></script>
+<script src="../threejsLib/three.js"></script>
 <script>
     var camera, scene, renderer;
 
@@ -29,7 +29,7 @@
         document.body.appendChild(renderer.domElement);
 
         // Specifying the size(blocks) and spacing of the Grid
-        var size = 20; step = 2; // this will create 4 box and 2 lines addition to one center line
+        var size = 10; step = 2; // this will create 4 box and 2 lines addition to one center line
 
         var geometry = new THREE.Geometry();
         // Basic line for our Grid
@@ -60,5 +60,4 @@
 </script>
 
 </body>
-</html>
 </html>
